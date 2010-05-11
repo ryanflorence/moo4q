@@ -27,29 +27,28 @@ Useless Example Class
 ### A Person class
 
     var Person = new Class({
-
-    	Implements: Options, 
-
-    		options: {
-    			height: 'tall',
-    			weight: 'fat'
-    		},
-
-    	jQuery: 'person', // must be after options definition
-
-            awesome: true,
-
-    	initialize: function(selector, options){
-    		this.setOptions(options);
-    		this.jqueryObject = jQuery(selector);
-    	},
-
-    	dance: function(whichDance){
-    		alert(whichDance);
-    		return this;
-
-    	}
-
+      
+      Implements: Options, 
+    	
+      options: {
+    	  height: 'tall',
+    	  weight: 'fat'
+      },
+      
+      jQuery: 'person', // must be after options definition
+      
+      awesome: true,
+      
+      initialize: function(selector, options){
+        this.setOptions(options);
+        this.jqueryObject = jQuery(selector);
+      },
+    	
+      dance: function(whichDance){
+        alert(whichDance);
+        return this;
+      }
+    
     });
 
 ### Usage
