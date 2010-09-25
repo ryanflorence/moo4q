@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv=Content-type content="text/html; charset=utf-8">
+	<title>Multiple Matches</title>
+	<script src='../Libs/jquery-1.4.2.js'></script>
+	<script src='../Libs/mootools-1.2.4-base.js'></script>
+	<script src='../Source/Class.Mutators.jQuery.js'></script>
+	<style type="text/css" media="screen">
+		body {
+			font-family: Times, "Times New Roman";
+		}
+		
+		img {
+			padding: 1px;
+			border: solid 1px #ccc;
+		}
+		
+		span.caption {
+			float: left;
+			clear: left;
+			margin: 1em 1em 1em 0;
+			text-align: center;
+		}
+		
+		span.caption span {
+			display: block;
+			font-family: helvetica, arial;
+			font-style: italic;
+			font-size: 80%;
+			color: #585858;
+		}
+		
+		span.caption-1 {
+			float: right;
+			margin: 1em 0 1em 1em;
+		}
+	</style>
+</head>
+<body>
+
+<p>
+	<img src="http://www.google.com/logos/2010/d4g_chile10-hp.gif" alt="Doodle4Google Winner Chile - (Chile)"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p class=second>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <img src="http://www.google.com/logos/2010/oz10-hp.gif" alt="71st Anniversary of The Wizard of Oz"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+	<img src="http://www.google.com/logos/july4thgoldberg10-hp.png" alt="Happy 4th of July and Happy Birthday Rube Goldberg!">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<p>
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<script>
+
+var ImageCaption = new Class({
+	
+	Implements: Options,
+	
+	options: {
+		wrapTag: 'div',
+		wrapOptions: {
+			'class': 'caption'
+		},
+		indexedClassName: 'caption'
+	},
+	
+	jQuery: 'caption',
+	
+	initialize: function(selector, options){
+		this.setOptions(options);
+		this.jQuery = jQuery(selector);
+		this.bound = this.createCaption.bind(this);
+		this.jQuery.each(this.bound);
+	},
+	
+	createCaption: function(index, element){
+		var el = jQuery(element);
+		var wrap = jQuery('<' + this.options.wrapTag + '/>', this.options.wrapOptions).addClass(this.options.indexedClassName + '-' + index);
+		var caption = jQuery('<span>' + el.attr('alt') + '</span>');
+		el.wrap(wrap).after(caption);
+	}
+	
+});
+
+
+$('img').caption({wrapTag: 'span'});
+
+</script>
+</body>
+</html>
