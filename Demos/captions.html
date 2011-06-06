@@ -3,8 +3,8 @@
 <head>
 	<meta http-equiv=Content-type content="text/html; charset=utf-8">
 	<title>Multiple Matches</title>
-	<script src='../Libs/jquery-1.4.2.js'></script>
-	<script src='../Libs/mootools-1.2.4-base.js'></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/mootools/1.3.1/mootools-yui-compressed.js"></script>
 	<script src='../Source/Class.Mutators.jQuery.js'></script>
 	<style type="text/css" media="screen">
 		body {
@@ -81,9 +81,9 @@ var ImageCaption = new Class({
 	
 	initialize: function(selector, options){
 		this.setOptions(options);
-		this.jQuery = jQuery(selector);
+		this.$elements = jQuery(selector);
 		this.bound = this.createCaption.bind(this);
-		this.jQuery.each(this.bound);
+		this.$elements.each(this.bound);
 	},
 	
 	createCaption: function(index, element){

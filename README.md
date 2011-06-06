@@ -1,25 +1,38 @@
 moo4q!
 ======
 
-Include all three files into your document
+[Documentation and examples](http://moo4q.com)
 
-    <script src="jquery-1.4.2.js"></script>
-    <script src="mootools-1.2.4-base.js"></script>
-    <script src="Class.Mutators.jQuery.js"></script>
+Include jQuery:
 
-Add a jQuery prototype method name to your class and a selector and options as the only arguments to the initialize method:
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+
+Can build the MooTools component with packager.
+
+    $ packager build Moo4Q/Moo4Q > mootools.js
+
+And then include it:
+
+    <script src="mootools.js"></script>
+
+Or just include the mutator with whatever MooTools build you've got:
+
+    <script src="http://ajax.googleapis.com/ajax/libs/mootools/1.3.1/mootools-yui-compressed.js"></script>
+    <script src='../Source/Class.Mutators.jQuery.js'></script>
+
+Add a jQuery prototype method name to your class and set the arguments to a selector and an options object to the initialize method:
 
     var Fake = new Class({
       
       jQuery: 'fake'
       
-      initialize: function(selector, options){
+      initialize: function (selector, options){
         // do stuff
       }
 
     });
 
-And now you have the power and flexibility of MooTools Class, Core, and Native and the popularity of jQuery's DOM-focused library.  Note the MooTools portion is only 8k gzipped.
+And now you have the power and flexibility of MooTools Class (and its dependencies) and the popularity of jQuery's DOM-focused library.
 
 Useless Example Class
 ---------------------

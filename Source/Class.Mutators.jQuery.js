@@ -3,27 +3,27 @@
 
 script: Class.Mutators.jQuery
 
-description: Extends the jQuery object with a MooTools Class
+description: Bridges a MooTools class to the jQuery object prototype.
 
 license: MIT-style license.
 
-authors: Ryan Florence, Christoph Pojer, Ibolmo Maldonado
+author: Ryan Florence
 
 requires:
-- core:1.2.4: [Native, Class, Class.Extras]
+  - Core/Class
 
-provides: [Class.Mutators.jQuery]
+provides: [Moo4q]
 
 ...
 */
 
 Class.Mutators.jQuery = function(name){
 	var self = this;
-	jQuery.fn[name] = function(arg){
+	jQuery.fn[name] = function (arg){
 		var instance = this.data(name);
-		if ($type(arg) == 'string'){
+		if (typeOf(arg) == 'string'){
 			var prop = instance[arg];
-			if ($type(prop) == 'function'){
+			if (typeOf(prop) == 'function'){
 				var returns = prop.apply(instance, Array.slice(arguments, 1));
 				return (returns == instance) ? this : returns;
 			} else if (arguments.length == 1){
